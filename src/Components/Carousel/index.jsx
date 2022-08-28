@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function Carousel({ images }) {
-  console.log(images)
   const settings = {
     infinite: true,
     dots: true,
@@ -13,14 +12,15 @@ export default function Carousel({ images }) {
     lazyLoad: true,
     autoplay: true,
     autoplaySpeed: 2000,
+    arrows: false,
   };
 
   return (
     <div>
-      <div class="max-w-full mx-auto shadow-xl">
+      <div className="max-w-full mx-auto shadow-xl">
         <div
           id="default-carousel"
-          class="relative"
+          className="relative"
           data-carousel="static"
         >
           <Slider {...settings}>
