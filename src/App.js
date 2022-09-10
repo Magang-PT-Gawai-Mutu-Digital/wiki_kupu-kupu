@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Beranda />} />
           <Route path="/klasifikasi" element={<Klasifikasi />} />
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail/:id" element={<Detail />} />
           <Route path="/tentang" element={<Tentang />} />
           <Route path="/foto" element={<Foto />} />
           <Route path="/anatomi" element={<Anatomi />} />
