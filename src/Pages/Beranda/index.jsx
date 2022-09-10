@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import ReactPlayer from "react-player";
 
@@ -9,6 +9,9 @@ import spesies from "../../assets/spesies.png";
 import welcomepic from "../../assets/welcomepic.png";
 import logo from "../../assets/logo_gawai.jpeg";
 import images from "../../Components/Carousel/images";
+import useQueryAllKupuKupu from "../../GraphQL/Hooks/QueryAllKupu";
+import { useQuery } from "@apollo/client";
+import { getAllDataKupu } from "../../GraphQL/Query";
 
 export default function Beranda() {
   const backgroundImage = {
@@ -23,44 +26,28 @@ export default function Beranda() {
     },
   };
 
-  const [dataKupu] = useState([
-    {
-      id: 1,
-      nama: "Blue Morpho",
-      famili: "Nymphalidae",
-      src: require("../../assets/spesies.png"),
-    },
-    {
-      id: 2,
-      nama: "Blue Morpho",
-      famili: "Nymphalidae",
-      src: require("../../assets/spesies.png"),
-    },
-    {
-      id: 3,
-      nama: "Blue Morpho",
-      famili: "Nymphalidae",
-      src: require("../../assets/spesies.png"),
-    },
-    {
-      id: 4,
-      nama: "Blue Morpho",
-      famili: "Nymphalidae",
-      src: require("../../assets/spesies.png"),
-    },
-    {
-      id: 5,
-      nama: "Blue Morpho",
-      famili: "Nymphalidae",
-      src: require("../../assets/spesies.png"),
-    },
-  ]);
+  const [allKupu, setAllKupu] = useState([]);
+
+  // const {allDataKupu} = useQueryAllKupuKupu()
+  // console.log(allDataKupu);
+  // console.log(allKupu)
+
+  const { data: allDataKupu } = useQuery(getAllDataKupu);
+  console.log(allDataKupu);
+  console.log(allKupu);
+
+  useEffect(() => {
+    if (allDataKupu) {
+      setAllKupu(allDataKupu?.nama_ilmiah);
+    }
+  }, [allDataKupu]);
+
   return (
     <div className="h-full mb-8">
       <div className="relative">
         <Carousel images={images} />
         {/* spesies terbaru  */}
-        <div className="mx-8 absolute bg-primary-white rounded-lg -mt-20 shadow-xl p-4">
+        <div className="mx-8 absolute w-11/12 bg-primary-white rounded-lg -mt-20 shadow-xl p-4">
           <div className="flex justify-between ">
             <h3 className="text-lg font-semibold">Spesies Terbaru</h3>
             <NavLink
@@ -71,7 +58,7 @@ export default function Beranda() {
             </NavLink>
           </div>
           <div className="flex flex-wrap p-4 gap-14">
-            {dataKupu.map((item, index) => (
+            {allKupu.map((item, index) => (
               <>
                 <div
                   key={index}
@@ -83,10 +70,14 @@ export default function Beranda() {
                     width="176"
                     className="rounded-lg"
                   />
-                  <h3 className="font-semibold">{item.nama}</h3>
-                  <p>{item.famili}</p>
+                  <h3 className="font-semibold">{item.name}</h3>
+
+                  <p>{item.spesy.genus.sub_famili.famili.name}</p>
                   <div className="w-full">
-                    <NavLink to="/detail" className="w-full flex justify-center items-center">
+                    <NavLink
+                      to="/detail"
+                      className="w-full flex justify-center items-center"
+                    >
                       <Button>Detail</Button>
                     </NavLink>
                   </div>
@@ -106,10 +97,10 @@ export default function Beranda() {
             indonesia
           </h1>
           <p className="text-base">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut cumque
-            eos excepturi quaerat, voluptatem eveniet fugit ipsam fugiat ullam
-            quibusdam temporibus nihil officiis dolore porro rem deleniti
-            dolorum reprehenderit odit.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
+            nesciunt perspiciatis atque incidunt laudantium, accusamus culpa
+            totam nulla error saepe non, doloremque, est ipsa nobis recusandae
+            praesentium repellendus deserunt similique!
           </p>
           <div className="w-1/2">
             <NavLink to="/tentang">

@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import useQueryKupuKupu from "../../../GraphQL/Hooks/QueryKupu";
 
-export default function DeskripsiTab() {
+export default function DeskripsiTab(props) {
+  const {dataKupu} = props
+  console.log(dataKupu)
+
   const [tabelHeader] = useState([
     "Ordo",
-    "Super Famili",
     "Famili",
     "Sub Famili",
     "Genus",
     "Species",
     "Nama Ilmiah",
-    "Nama Lain",
+    "Nama Umum",
   ]);
 
-  const [tabelData] = useState([
-    "Lorem Ipsum",
+  const [kupu, setKupu] = useState([]);
 
-  ]);
+ const {id} = useParams()
 
   return (
     <div>
@@ -38,9 +41,9 @@ export default function DeskripsiTab() {
                       <th className="w-1/4 text-base font-medium bg-primary-lightGray px-2 py-2 text-left">
                         {item}
                       </th>
-                      {tabelData.map((data) => (
+                      {/* {item.map((data) => (
                         <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">{data}</td>
-                      ))}
+                      ))} */}
                     </tr>
                   ))}
                 </table>

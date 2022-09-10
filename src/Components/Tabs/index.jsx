@@ -6,7 +6,8 @@ import PersebaranTab from "./PersebaranTab";
 import ReferensiTab from "./ReferensiTab";
 import SiklusHidupTab from "./SiklusHidupTab";
 
-export default function Tabs() {
+export default function Tabs(props) {
+  const {dataKupu} = props
   const [toogleState, setToogleState] = useState(1);
   const toogleTab = (index) => {
     setToogleState(index);
@@ -51,7 +52,7 @@ export default function Tabs() {
           <div
             className={toogleState === 1 ? "content active-content" : "content"}
           >
-            <DeskripsiTab />
+            <DeskripsiTab dataKupu={dataKupu}/>
           </div>
           <div
             className={toogleState === 2 ? "content active-content" : "content"}

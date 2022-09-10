@@ -14,6 +14,7 @@ export default function Carousel({ images }) {
     autoplaySpeed: 2000,
     arrows: false,
   };
+  
 
   return (
     <div>
