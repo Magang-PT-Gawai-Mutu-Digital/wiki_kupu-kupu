@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import ReactPlayer from "react-player";
 
+import { useQuery } from "@apollo/client";
+import { getAllDataKupu } from "../../GraphQL/Query";
 import Carousel from "../../Components/Carousel";
 import Button from "../../Components/Button";
 
@@ -9,9 +11,6 @@ import spesies from "../../assets/spesies.png";
 import welcomepic from "../../assets/welcomepic.png";
 import logo from "../../assets/logo_gawai.jpeg";
 import images from "../../Components/Carousel/images";
-import useQueryAllKupuKupu from "../../GraphQL/Hooks/QueryAllKupu";
-import { useQuery } from "@apollo/client";
-import { getAllDataKupu } from "../../GraphQL/Query";
 
 export default function Beranda() {
   const backgroundImage = {
@@ -28,17 +27,11 @@ export default function Beranda() {
 
   const [allKupu, setAllKupu] = useState([]);
 
-  // const {allDataKupu} = useQueryAllKupuKupu()
-  // console.log(allDataKupu);
-  // console.log(allKupu)
-
   const { data: allDataKupu } = useQuery(getAllDataKupu);
-  console.log(allDataKupu);
-  console.log(allKupu);
 
   useEffect(() => {
     if (allDataKupu) {
-      setAllKupu(allDataKupu?.nama_ilmiah);
+      setAllKupu(allDataKupu?.nama_umum);
     }
   }, [allDataKupu]);
 
@@ -65,17 +58,20 @@ export default function Beranda() {
                   className="w-44 pb-2 rounded-lg shadow-xl flex flex-col items-center gap-2"
                 >
                   <img
-                    src={item.src}
+                   src={`data:image/jpeg;base64,${item.image}`}
                     alt="kupu-kupu"
                     width="176"
                     className="rounded-lg"
                   />
-                  <h3 className="font-semibold">{item.name}</h3>
+                  <h3 className="font-semibold">{item.nama_ilmiah.name}</h3>
 
-                  <p>{item.spesy.genus.sub_famili.famili.name}</p>
+                  <p>{item.nama_ilmiah.spesy.genus.sub_famili.famili.name}</p>
                   <div className="w-full">
                     <NavLink
-                      to="/detail"
+                      to={`/detail/${item.id}`}
+                      key={index}
+                      state={{item}}
+                      onClick={item.id}
                       className="w-full flex justify-center items-center"
                     >
                       <Button>Detail</Button>
