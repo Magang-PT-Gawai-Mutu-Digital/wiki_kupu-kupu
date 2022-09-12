@@ -12,7 +12,7 @@ export default function Klasifikasi() {
 
   useEffect(() => {
     if (dataKlasifikasi) {
-      setDataKupu(dataKlasifikasi?.nama_ilmiah);
+      setDataKupu(dataKlasifikasi?.nama_umum);
     }
   }, [dataKlasifikasi]);
 
@@ -26,20 +26,20 @@ export default function Klasifikasi() {
                 <div className="w-64 rounded-lg shadow-xl flex flex-col items-center gap-2 pb-2">
                   <img
                     key={index}
-                    src={require("../../assets/spesies.png")}
+                    src={`data:image/jpeg;base64,${dataKupu.image}`}
                     alt="kupu-kupu"
                     width="256"
                     className="rounded-lg"
                   />
-                  <h3 className="font-semibold">{dataKupu.name}</h3>
+                  <h3 className="font-semibold">{dataKupu.nama_ilmiah.name}</h3>
 
-                  <p>{dataKupu.spesy.genus.sub_famili.famili.name}</p>
+                  <p>{dataKupu.nama_ilmiah.spesy.genus.sub_famili.famili.name}</p>
 
                   <Link
-                    to="/detail"
+                    to={`/detail/${dataKupu.id}`}
                     key={index}
                     state={{dataKupu}}
-                    onClick={()=>setDataKupu(dataKupu)}
+                    onClick={dataKupu.id}
                     className="w-full flex justify-center items-center"
                   >
                     <Button>Detail</Button>
