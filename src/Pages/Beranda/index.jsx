@@ -33,25 +33,25 @@ export default function Beranda() {
 
   return (
     <div className="h-full mb-8">
-      <div className="relative">
+      <div className="laptop:relative">
         <Carousel images={images} />
         {/* spesies terbaru  */}
-        <div className="lg:mx-8 sm:mx-2 absolute w-11/12 bg-primary-white rounded-lg -mt-20 shadow-xl p-4">
+        <div className="laptop:mx-8 phone:mx-2 laptop:absolute w-11/12 bg-primary-white rounded-lg laptop:-mt-20 tablet:mt-8 phone:mt-8 shadow-xl p-4">
           <div className="flex justify-between ">
             <h3 className="text-lg font-semibold">Spesies Terbaru</h3>
             <NavLink
-              to="/klasifikasi"
+              to="/all-klasifikasi"
               className="text-sm hover:text-primary-green"
             >
               SEE ALL
             </NavLink>
           </div>
-          <div className="flex flex-wrap p-4 gap-12">
+          <div className="flex flex-wrap p-4 gap-12 tablet:justify-center phone:justify-center">
             {allKupu.map((item, index) => (
               <>
                 <div
                   key={index}
-                  className="w-44 pb-2 rounded-lg shadow-xl flex flex-wrap h-max flex-col items-center gap-2"
+                  className="laptop:w-44 tablet:w-32 pb-2 rounded-lg shadow-xl flex flex-wrap h-max flex-col items-center gap-2"
                 >
                   <img
                     src={`data:image/jpeg;base64,${item.thumbnail}`}
@@ -59,7 +59,7 @@ export default function Beranda() {
                     width="176"
                     className="rounded-lg"
                   />
-                  <h3 className="font-semibold">{item.binomial_name}</h3>
+                  <h3 className="font-semibold text-center">{item.binomial_name}</h3>
                   <p>{item.genus.famili.name}</p>
                   <div className="w-full">
                     <NavLink
@@ -80,8 +80,8 @@ export default function Beranda() {
       </div>
 
       {/* welcome  */}
-      <div className="flex lg:gap-96 pl-4 lg:mt-96 md:mt-80 md:gap-4 sm:mt-64 sm:gap-4 py-8 bg-primary-lightGreen">
-        <div className=" flex flex-col gap-4">
+      <div className="flex laptop:gap-96 pl-4 laptop:mt-96 tablet:mt-4 tablet:gap-4 phone:mt-4 phone:gap-4 py-8 bg-primary-lightGreen">
+        <div className=" flex flex-col gap-4 text-center items-center">
           <h1 className="text-3xl font-bold uppercase">
             Selamat datang di taman kupu-kupu{" "}
             <h1 className="inline text-primary-green">gita persada</h1> lampung,
@@ -115,7 +115,7 @@ export default function Beranda() {
 
       {/* fitur lainnya */}
       <h1 className="text-3xl font-bold text-center mb-8">Fitur Lainnya</h1>
-      <div className="flex gap-24 justify-center">
+      <div className="flex flex-wrap laptop:gap-24 phone:gap-4 justify-center">
         <div style={backgroundImage.header}>
           <NavLink to="/anatomi">
             <div
@@ -143,7 +143,7 @@ export default function Beranda() {
           </NavLink>
         </div>
         <div style={backgroundImage.header}>
-          <NavLink to="/artikel">
+          <a href="https://kupu-kupu.id/" target='_blank' rel="noreferrer">
             <div
               className="rounded-lg w-48 h-48 flex items-center"
               style={backgroundImage.content}
@@ -152,10 +152,10 @@ export default function Beranda() {
                 Artikel Kupu-Kupu
               </h1>
             </div>
-          </NavLink>
+          </a>
         </div>
         <div style={backgroundImage.header}>
-          <NavLink to="/jurnal">
+          <a href="http://jurnal.kupu-kupu.id/" target='_blank' rel="noreferrer">
             <div
               className="rounded-lg w-48 h-48 flex items-center"
               style={backgroundImage.content}
@@ -164,7 +164,7 @@ export default function Beranda() {
                 Jurnal Kupu-Kupu
               </h1>
             </div>
-          </NavLink>
+          </a>
         </div>
       </div>
 
@@ -172,7 +172,7 @@ export default function Beranda() {
       <h1 className="text-3xl font-bold text-center my-8">
         Lembaga yang Berpartisipasi
       </h1>
-      <div className="flex justify-center gap-12">
+      <div className="flex flex-wrap justify-center laptop:gap-12 phone:gap-2">
         <img
           src={require("../../assets/logo_gawai.jpeg")}
           alt="logo gawai mutu digital"

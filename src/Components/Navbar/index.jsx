@@ -26,7 +26,7 @@ export default function Navbar() {
   return (
     <div>
       <header className="text-primary-black body-font">
-        <div className="container mx-auto flex flex-wrap px-5 flex-col md:flex-row md:justify-center sm:justify-center items-center lg:justify-between">
+        <div className="container mx-auto flex flex-wrap laptop:px-5 flex-col tablet:flex-row tablet:justify-center tablet:px-5 phone:px-2 phone:justify-center items-center laptop:justify-between">
           <nav className="flex flex-wrap items-center font-semibold">
             <NavLink
               to="/"
@@ -51,16 +51,16 @@ export default function Navbar() {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </button>
               {isToggleOn ? (
                 ""
               ) : (
-                <div className="flex flex-col absolute z-10 left-16 mt-2 w-36 min-w-max items-center bg-primary-white text-base float-left py-2 list-none text-left rounded-lg shadow-lg m-0 bg-clip-padding border-none">
+                <div className="flex flex-col absolute z-10 laptop:left-16 tablet:left-48 phone:left-16 mt-2 w-36 min-w-max items-center bg-primary-white text-base float-left py-2 list-none text-left rounded-lg shadow-lg m-0 bg-clip-padding border-none">
                   {dataKupu?.map((data, index) => (
                     <NavLink
                       to={`/klasifikasi/${data.id}`}
@@ -87,14 +87,14 @@ export default function Navbar() {
           </nav>
           <NavLink
             to="/beranda"
-            className="flex order-first lg:order-none title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0"
+            className="flex order-first laptop:order-none title-font font-medium items-center text-gray-900 laptop:items-center laptop:justify-center mb-4 tablet:mb-0"
           >
             <Logo />
           </NavLink>
-          <div className="inline-flex lg:justify-end mt-4 md:mt-0 items-center justify-center gap-2">
+          <div className="inline-flex laptop:justify-end mt-4 tablet:mt-0 items-center justify-center gap-2">
             <SearchBar />
             <button className="inline-flex text-primary-white bg-primary-green border-0 py-2 px-6 rounded">
-              Button
+              Cari
             </button>
           </div>
         </div>

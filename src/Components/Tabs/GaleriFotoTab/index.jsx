@@ -29,7 +29,7 @@ export default function GaleriFotoTab() {
         <div className="container px-8 py-4 mx-auto">
           <div className="flex flex-wrap -m-4">
             {images.map((image, index) => (
-              <div className="lg:w-1/4 sm:w-1/2 p-4">
+              <div className="laptop:w-1/4 phone:w-1/2 p-4">
                 <img
                   key={index}
                   src={image.src}

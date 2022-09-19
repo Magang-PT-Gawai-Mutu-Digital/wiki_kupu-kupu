@@ -10,7 +10,7 @@ export default function Tentang() {
   return (
     <div>
       <div className="container flex gap-12 my-4 pl-4 py-8 bg-primary-lightGreen">
-        <div className="w-2/3 flex flex-col gap-4">
+        <div className="laptop:w-2/3 flex flex-col gap-4 tablet:w-full tablet:p-4 phone:w-full phone:p-4">
           <h1 className="text-3xl font-bold uppercase">
             taman kupu-kupu{" "}
             <h1 className="inline text-primary-green">gita persada</h1> lampung
@@ -39,7 +39,7 @@ export default function Tentang() {
             </p>
           </div>
         </div>
-        <div className="w-4/12 flex justify-end">
+        <div className="w-4/12 laptop:justify-end laptop:flex tablet:hidden phone:hidden">
           <img
             src={require("../../assets/welcomepic.png")}
             alt="kupu-kupu"
@@ -49,7 +49,7 @@ export default function Tentang() {
       </div>
 
       {/* address  */}
-      <div className="flex gap-8 my-8">
+      <div className="flex laptop:flex-row tablet:flex-col phone:flex-col gap-8 my-8">
         {/* maps  */}
           <MapContainer style={{ height: "350px", width: "100%" }} center={[-5.420787, 105.188644]} zoom={13} scrollWheelZoom={false}>
             <TileLayer

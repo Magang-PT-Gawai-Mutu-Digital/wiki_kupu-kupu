@@ -57,22 +57,22 @@ export default function Tabs(props) {
           <div
             className={toogleState === 2 ? "content active-content" : "content"}
           >
-            <SiklusHidupTab />
+            <SiklusHidupTab datakupu={datakupu}/>
           </div>
           <div
             className={toogleState === 3 ? "content active-content" : "content"}
           >
-            <GaleriFotoTab />
+            <GaleriFotoTab datakupu={datakupu}/>
           </div>
           <div
             className={toogleState === 4 ? "content active-content" : "content"}
           >
-            <PersebaranTab />
+            <PersebaranTab datakupu={datakupu}/>
           </div>
           <div
             className={toogleState === 5 ? "content active-content" : "content"}
           >
-            <ReferensiTab />
+            <ReferensiTab datakupu={datakupu}/>
           </div>
         </div>
       </div>

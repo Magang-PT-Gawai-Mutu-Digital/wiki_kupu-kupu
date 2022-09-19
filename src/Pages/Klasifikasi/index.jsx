@@ -25,16 +25,16 @@ export default function Klasifikasi() {
         <section className="body-font py-4">
           <div className="container px-8 py-4 mx-auto">
             <div className="flex w-full mb-4 flex-wrap">
-              <h1 className="sm:text-3xl text-2xl uppercase font-medium title-font lg:w-1/3 lg:mb-0 mb-4">
+              <h1 className="phone:text-3xl text-2xl uppercase font-medium title-font laptop:w-1/3 laptop:mb-0 mb-4">
                 Famili {dataKupu.name}
               </h1>
-              <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base">
+              <p className="laptop:pl-6 laptop:w-2/3 mx-auto leading-relaxed text-base">
                 {dataKupu.description}
               </p>
             </div>
             <>
-              <div className="flex flex-wrap -mx-4 mb-4 sm:pr-10">
-                <div className="w-full text-center sm:p-2 px-4">
+              <div className="flex flex-wrap -mx-4 mb-4 phone:pr-10">
+                <div className="w-full text-center phone:p-2 px-4">
                   <h1 className="title-font uppercase font-bold text-3xl">
                     Species
                   </h1>
@@ -45,7 +45,7 @@ export default function Klasifikasi() {
                 {dataKupu.genera.map((item) => (
                   <>
                     {item.species?.map((spesies, index) => (
-                      <div className="lg:w-1/4 sm:w-1/2 p-4">
+                      <div className="laptop:w-1/4 phone:w-1/2 p-4">
                         <div className="w-64 rounded-lg shadow-xl flex flex-col items-center gap-2 pb-2 transform duration-700 ease-in-out hover:-translate-y-1 hover:scale-110" >
                           <img
                             key={index}

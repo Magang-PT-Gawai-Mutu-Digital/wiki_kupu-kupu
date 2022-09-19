@@ -14,6 +14,13 @@ export const getAllDataKupu = gql`
         id
         lifecycle_images
       }
+      persebarans {
+        id
+        alamat
+        latitude
+        link
+        longtitude
+      }
       genus {
         genus_name
         id
@@ -27,8 +34,8 @@ export const getAllDataKupu = gql`
 `;
 
 export const getKlasifikasiKupu = gql`
-  query AllKlasifikasi{
-    famili{
+  query AllKlasifikasi {
+    famili {
       description
       id
       name
@@ -43,9 +50,17 @@ export const getKlasifikasiKupu = gql`
           indonesian_name
           species_name
           thumbnail
+
           butterfly_images {
             lifecycle_images
             id
+          }
+          persebarans {
+            id
+            alamat
+            latitude
+            link
+            longtitude
           }
         }
       }
@@ -74,6 +89,13 @@ export const getKlasifikasiKupuById = gql`
             lifecycle_images
             id
           }
+          persebarans {
+            id
+            alamat
+            latitude
+            link
+            longtitude
+          }
         }
       }
     }
@@ -94,6 +116,13 @@ export const getDataKupuKupuById = gql`
         id
         lifecycle_images
       }
+      persebarans {
+        id
+        alamat
+        latitude
+        link
+        longtitude
+      }
       genus {
         genus_name
         id
@@ -102,6 +131,16 @@ export const getDataKupuKupuById = gql`
           name
         }
       }
+    }
+  }
+`;
+
+export const getAllThumbnail = gql`
+  query getThumbnail {
+    species {
+      id
+      thumbnail
+      binomial_name
     }
   }
 `;
