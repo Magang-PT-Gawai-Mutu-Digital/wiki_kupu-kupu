@@ -10,7 +10,7 @@ export default function DeskripsiTab(props) {
           <div className="flex">
             <div className="w-10/12">
               <img
-                src={`data:image/jpeg;base64,${data.image}`}
+                src={`data:image/jpeg;base64,${data.thumbnail}`}
                 alt="kupu-kupu"
                 width="360"
                 className="rounded-lg"
@@ -26,15 +26,7 @@ export default function DeskripsiTab(props) {
                         Famili
                       </th>
                       <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">
-                        {data.nama_ilmiah.spesy.genus.sub_famili.famili.name}
-                      </td>
-                    </tr>
-                    <tr className="border-collapse border">
-                      <th className="w-1/4 text-base font-medium bg-primary-lightGray px-2 py-2 text-left">
-                        Sub Famili
-                      </th>
-                      <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">
-                        {data.nama_ilmiah.spesy.genus.sub_famili.name}
+                        {data.genus.famili.name}
                       </td>
                     </tr>
                     <tr className="border-collapse border">
@@ -42,7 +34,7 @@ export default function DeskripsiTab(props) {
                         Genus
                       </th>
                       <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">
-                        {data.nama_ilmiah.spesy.genus.name}
+                        {data.genus.genus_name}
                       </td>
                     </tr>
                     <tr className="border-collapse border">
@@ -50,7 +42,7 @@ export default function DeskripsiTab(props) {
                         Spesies
                       </th>
                       <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">
-                        {data.nama_ilmiah.spesy.name}
+                        {data.species_name}
                       </td>
                     </tr>
                     <tr className="border-collapse border">
@@ -58,15 +50,15 @@ export default function DeskripsiTab(props) {
                         Nama Ilmiah
                       </th>
                       <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">
-                        {data.nama_ilmiah.name}
+                        {data.binomial_name}
                       </td>
                     </tr>
                     <tr className="border-collapse border">
                       <th className="w-1/4 text-base font-medium bg-primary-lightGray px-2 py-2 text-left">
-                        Nama Umum
+                        Nama Indonesia
                       </th>
                       <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">
-                        {data.name}
+                        {data.indonesian_name}
                       </td>
                     </tr>
                   </table>

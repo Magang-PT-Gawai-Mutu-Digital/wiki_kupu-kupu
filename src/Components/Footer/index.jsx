@@ -12,7 +12,7 @@ export default function Footer() {
               <Logo/>
             </a>
             <p className="mt-2 text-sm text-primary-gray">
-            Lorem ipsum dolor sit amet, consectetur adipisci ng elit. Aenean tempor elementum metus ac egestas. Suspendisse sodales tempus quam, lacus tristi
+            Wiki Kupu-Kupu merupakan website yang digunakan untuk memberikan informasi mengenai kupu-kupu dari Taman Kupu-Kupu Gita Persada Lampung, Indonesia.
             </p>
           </div>
           <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
@@ -22,13 +22,13 @@ export default function Footer() {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="hover:text-gray-800">Lorem Ipsum</a>
+                  <a className="hover:text-primary-green">Lorem Ipsum</a>
                 </li>
                 <li>
-                  <a className="hover:text-gray-800">Lorem Ipsum</a>
+                  <a className="hover:text-primary-green">Lorem Ipsum</a>
                 </li>
                 <li>
-                  <a className="hover:text-gray-800">Lorem Ipsum</a>
+                  <a className="hover:text-primary-green">Lorem Ipsum</a>
                 </li>
               </nav>
             </div>
@@ -38,13 +38,13 @@ export default function Footer() {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="hover:text-gray-800">Lorem Ipsum</a>
+                  <a className="hover:text-primary-green">Lorem Ipsum</a>
                 </li>
                 <li>
-                  <a className="hover:text-gray-800">Lorem Ipsum</a>
+                  <a className="hover:text-primary-green">Lorem Ipsum</a>
                 </li>
                 <li>
-                  <a className="hover:text-gray-800">Lorem Ipsum</a>
+                  <a className="hover:text-primary-green">Lorem Ipsum</a>
                 </li>
               </nav>
             </div>
@@ -54,7 +54,7 @@ export default function Footer() {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="hover:text-gray-800">Lorem Ipsum</a>
+                  <a className="hover:text-primary-green">Lorem Ipsum</a>
                 </li>
               </nav>
             </div>

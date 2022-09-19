@@ -6,16 +6,12 @@ import { useQuery } from "@apollo/client";
 import { getAllDataKupu } from "../../GraphQL/Query";
 import Carousel from "../../Components/Carousel";
 import Button from "../../Components/Button";
-
-import spesies from "../../assets/spesies.png";
-import welcomepic from "../../assets/welcomepic.png";
-import logo from "../../assets/logo_gawai.jpeg";
 import images from "../../Components/Carousel/images";
 
 export default function Beranda() {
   const backgroundImage = {
     header: {
-      backgroundImage: `url(${spesies})`,
+      backgroundImage: `url(${require("../../assets/spesies.png")})`,
       backgroundSize: "cover",
       borderRadius: "10px",
     },
@@ -26,12 +22,12 @@ export default function Beranda() {
   };
 
   const [allKupu, setAllKupu] = useState([]);
-
+  console.log(allKupu);
   const { data: allDataKupu } = useQuery(getAllDataKupu);
 
   useEffect(() => {
     if (allDataKupu) {
-      setAllKupu(allDataKupu?.nama_umum);
+      setAllKupu(allDataKupu?.species);
     }
   }, [allDataKupu]);
 
@@ -40,7 +36,7 @@ export default function Beranda() {
       <div className="relative">
         <Carousel images={images} />
         {/* spesies terbaru  */}
-        <div className="mx-8 absolute w-11/12 bg-primary-white rounded-lg -mt-20 shadow-xl p-4">
+        <div className="lg:mx-8 sm:mx-2 absolute w-11/12 bg-primary-white rounded-lg -mt-20 shadow-xl p-4">
           <div className="flex justify-between ">
             <h3 className="text-lg font-semibold">Spesies Terbaru</h3>
             <NavLink
@@ -50,27 +46,26 @@ export default function Beranda() {
               SEE ALL
             </NavLink>
           </div>
-          <div className="flex flex-wrap p-4 gap-14">
+          <div className="flex flex-wrap p-4 gap-12">
             {allKupu.map((item, index) => (
               <>
                 <div
                   key={index}
-                  className="w-44 pb-2 rounded-lg shadow-xl flex flex-col items-center gap-2"
+                  className="w-44 pb-2 rounded-lg shadow-xl flex flex-wrap h-max flex-col items-center gap-2"
                 >
                   <img
-                   src={`data:image/jpeg;base64,${item.image}`}
+                    src={`data:image/jpeg;base64,${item.thumbnail}`}
                     alt="kupu-kupu"
                     width="176"
                     className="rounded-lg"
                   />
-                  <h3 className="font-semibold">{item.nama_ilmiah.name}</h3>
-
-                  <p>{item.nama_ilmiah.spesy.genus.sub_famili.famili.name}</p>
+                  <h3 className="font-semibold">{item.binomial_name}</h3>
+                  <p>{item.genus.famili.name}</p>
                   <div className="w-full">
                     <NavLink
                       to={`/detail/${item.id}`}
                       key={index}
-                      state={{item}}
+                      state={{ item }}
                       onClick={item.id}
                       className="w-full flex justify-center items-center"
                     >
@@ -85,7 +80,7 @@ export default function Beranda() {
       </div>
 
       {/* welcome  */}
-      <div className="container flex gap-96 pl-4 mt-96 py-8 bg-primary-lightGreen">
+      <div className="flex lg:gap-96 pl-4 lg:mt-96 md:mt-80 md:gap-4 sm:mt-64 sm:gap-4 py-8 bg-primary-lightGreen">
         <div className=" flex flex-col gap-4">
           <h1 className="text-3xl font-bold uppercase">
             Selamat datang di taman kupu-kupu{" "}
@@ -104,8 +99,8 @@ export default function Beranda() {
             </NavLink>
           </div>
         </div>
-        <div>
-          <img src={welcomepic} alt="kupu-kupu" />
+        <div className="flex items-center">
+          <img src={require("../../assets/welcomepic.png")} alt="kupu-kupu" />
         </div>
       </div>
 
@@ -160,13 +155,13 @@ export default function Beranda() {
           </NavLink>
         </div>
         <div style={backgroundImage.header}>
-          <NavLink to="/museum">
+          <NavLink to="/jurnal">
             <div
               className="rounded-lg w-48 h-48 flex items-center"
               style={backgroundImage.content}
             >
               <h1 className="text-2xl font-semibold text-center">
-                Museum Kupu-Kupu
+                Jurnal Kupu-Kupu
               </h1>
             </div>
           </NavLink>
@@ -178,10 +173,26 @@ export default function Beranda() {
         Lembaga yang Berpartisipasi
       </h1>
       <div className="flex justify-center gap-12">
-        <img src={logo} alt="logo gawai mutu digital" width="240px" />
-        <img src={logo} alt="logo gawai mutu digital" width="240px" />
-        <img src={logo} alt="logo gawai mutu digital" width="240px" />
-        <img src={logo} alt="logo gawai mutu digital" width="240px" />
+        <img
+          src={require("../../assets/logo_gawai.jpeg")}
+          alt="logo gawai mutu digital"
+          width="240px"
+        />
+        <img
+          src={require("../../assets/logo_gawai.jpeg")}
+          alt="logo gawai mutu digital"
+          width="240px"
+        />
+        <img
+          src={require("../../assets/logo_gawai.jpeg")}
+          alt="logo gawai mutu digital"
+          width="240px"
+        />
+        <img
+          src={require("../../assets/logo_gawai.jpeg")}
+          alt="logo gawai mutu digital"
+          width="240px"
+        />
       </div>
     </div>
   );
