@@ -22,7 +22,6 @@ export default function Beranda() {
   };
 
   const [allKupu, setAllKupu] = useState([]);
-  console.log(allKupu);
   const { data: allDataKupu } = useQuery(getAllDataKupu);
 
   useEffect(() => {
@@ -40,24 +39,23 @@ export default function Beranda() {
           <div className="flex justify-between ">
             <h3 className="text-lg font-semibold">Spesies Terbaru</h3>
             <NavLink
-              to="/all-klasifikasi"
+              to="/foto"
               className="text-sm hover:text-primary-green"
             >
               SEE ALL
             </NavLink>
           </div>
-          <div className="flex flex-wrap p-4 gap-12 tablet:justify-center phone:justify-center">
+          <div className="flex flex-wrap p-4 laptop:gap-12 tablet:gap-4 phone:gap-2 tablet:justify-center phone:justify-center">
             {allKupu.map((item, index) => (
               <>
                 <div
                   key={index}
-                  className="laptop:w-44 tablet:w-32 pb-2 rounded-lg shadow-xl flex flex-wrap h-max flex-col items-center gap-2"
+                  className="laptop:w-44 tablet:w-44 phone:w-44 pb-2 rounded-lg shadow-xl flex flex-wrap h-max flex-col items-center gap-2"
                 >
                   <img
                     src={`data:image/jpeg;base64,${item.thumbnail}`}
                     alt="kupu-kupu"
-                    width="176"
-                    className="rounded-lg"
+                    className="w-full rounded-lg aspect-square"
                   />
                   <h3 className="font-semibold text-center">{item.binomial_name}</h3>
                   <p>{item.genus.famili.name}</p>

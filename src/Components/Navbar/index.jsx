@@ -14,9 +14,6 @@ export default function Navbar() {
   const [dataKupu, setDataKupu] = useState([]);
   const { data: dataKlasifikasi } = useQuery(getKlasifikasiKupu);
 
-  console.log(dataKupu);
-  console.log(isToggleOn);
-
   useEffect(() => {
     if (dataKlasifikasi) {
       setDataKupu(dataKlasifikasi?.famili);
@@ -92,10 +89,7 @@ export default function Navbar() {
             <Logo />
           </NavLink>
           <div className="inline-flex laptop:justify-end mt-4 tablet:mt-0 items-center justify-center gap-2">
-            <SearchBar />
-            <button className="inline-flex text-primary-white bg-primary-green border-0 py-2 px-6 rounded">
-              Cari
-            </button>
+            <SearchBar/>
           </div>
         </div>
       </header>

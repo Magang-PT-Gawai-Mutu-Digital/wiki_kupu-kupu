@@ -4,20 +4,20 @@ import { createClient } from "graphql-ws";
 import { getMainDefinition } from "@apollo/client/utilities";
 
 const httpLink = new HttpLink({
-  uri: "https://wiki-kupu-kupu.hasura.app/v1/graphql",
+  uri: "https://wikikupukupu.hasura.app/v1/graphql",
   headers: {
     "x-hasura-admin-secret":
-      "cRZtW0Ydsvbu4T9EOPG6W7riI5TPZPXVogIlxgVnMPoGkkPGerB14n2dNe2Lvpiy",
+      "JmFfpn0aKeAM4L4gTKr8mo5bF245xmFcA6L3Hqi0sF10JWHy8gy6wkBUFuEnh5nj",
   },
 });
 
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: "wss://wiki-kupu-kupu.hasura.app/v1/graphql",
+    url: "wss://wikikupukupu.hasura.app/v1/graphql",
     connectionParams: {
       headers: {
         "x-hasura-admin-secret":
-          "cRZtW0Ydsvbu4T9EOPG6W7riI5TPZPXVogIlxgVnMPoGkkPGerB14n2dNe2Lvpiy",
+          "JmFfpn0aKeAM4L4gTKr8mo5bF245xmFcA6L3Hqi0sF10JWHy8gy6wkBUFuEnh5nj",
       },
     },
   })

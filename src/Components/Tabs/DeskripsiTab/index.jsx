@@ -7,7 +7,7 @@ export default function DeskripsiTab(props) {
     <div>
       {datakupu.map((data, index) => (
         <div>
-          <div className="flex">
+          <div className="flex items-center">
             <div className="w-10/12">
               <img
                 src={`data:image/jpeg;base64,${data.thumbnail}`}
@@ -22,7 +22,7 @@ export default function DeskripsiTab(props) {
                   <table className="min-w-full">
                     {/* <> */}
                     <tr className="border-collapse border">
-                      <th className="w-1/4 text-base font-medium bg-primary-lightGray px-2 py-2 text-left">
+                      <th className="w-1/4 text-base font-semibold bg-primary-lightGray px-2 py-2 text-left">
                         Famili
                       </th>
                       <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">
@@ -30,7 +30,7 @@ export default function DeskripsiTab(props) {
                       </td>
                     </tr>
                     <tr className="border-collapse border">
-                      <th className="w-1/4 text-base font-medium bg-primary-lightGray px-2 py-2 text-left">
+                      <th className="w-1/4 text-base font-semibold bg-primary-lightGray px-2 py-2 text-left">
                         Genus
                       </th>
                       <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">
@@ -38,7 +38,7 @@ export default function DeskripsiTab(props) {
                       </td>
                     </tr>
                     <tr className="border-collapse border">
-                      <th className="w-1/4 text-base font-medium bg-primary-lightGray px-2 py-2 text-left">
+                      <th className="w-1/4 text-base font-semibold bg-primary-lightGray px-2 py-2 text-left">
                         Spesies
                       </th>
                       <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">
@@ -46,15 +46,15 @@ export default function DeskripsiTab(props) {
                       </td>
                     </tr>
                     <tr className="border-collapse border">
-                      <th className="w-1/4 text-base font-medium bg-primary-lightGray px-2 py-2 text-left">
+                      <th className="w-1/4 text-base font-semibold bg-primary-lightGray px-2 py-2 text-left">
                         Nama Ilmiah
                       </th>
-                      <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">
+                      <td className="w-1/2 text-base italic font-medium bg-primary-white px-2 py-2 text-left">
                         {data.binomial_name}
                       </td>
                     </tr>
                     <tr className="border-collapse border">
-                      <th className="w-1/4 text-base font-medium bg-primary-lightGray px-2 py-2 text-left">
+                      <th className="w-1/4 text-base font-semibold bg-primary-lightGray px-2 py-2 text-left">
                         Nama Indonesia
                       </th>
                       <td className="w-1/2 text-base font-medium bg-primary-white px-2 py-2 text-left">

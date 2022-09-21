@@ -9,7 +9,6 @@ export default function PersebaranTab(props) {
   });
 
   const { datakupu } = props;
-  console.log(datakupu);
   return (
     <div>
       <MapContainer

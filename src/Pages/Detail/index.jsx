@@ -10,8 +10,6 @@ export default function Detail() {
   const [datakupu, setData] = useState([])
   const {data: kupuById} = useQuery(getDataKupuKupuById, {variables: {id_spesies : id}})
 
-  console.log(datakupu);
-
   useEffect(() => {
     if (kupuById) {
       setData(kupuById?.species);

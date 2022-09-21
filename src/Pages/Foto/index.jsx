@@ -4,39 +4,8 @@ import { NavLink } from "react-router-dom";
 import { getAllThumbnail } from "../../GraphQL/Query";
 
 export default function Foto() {
-  // const [images] = useState([
-  //   {
-  //     id: 1,
-  //     src: require("../../assets/spesies.png"),
-  //     alt: "kupu-kupu",
-  //   },
-  //   {
-  //     id: 2,
-  //     src: require("../../assets/welcomepic.png"),
-  //     alt: "kupu-kupu",
-  //   },
-  //   {
-  //     id: 3,
-  //     src: require("../../assets/TKGP-Logo.png"),
-  //     alt: "kupu-kupu",
-  //   },
-  //   {
-  //     id: 4,
-  //     src: require("../../assets/spesies.png"),
-  //     alt: "kupu-kupu",
-  //   },
-  //   {
-  //     id: 5,
-  //     src: require("../../assets/spesies.png"),
-  //     alt: "kupu-kupu",
-  //   },
-  // ]);
-
   const [images, setImages] = useState([]);
-
   const { data: image } = useQuery(getAllThumbnail);
-
-  console.log(images);
 
   useEffect(() => {
     if (image) {

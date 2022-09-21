@@ -1,35 +1,91 @@
-import React from "react";
+import { useQuery } from "@apollo/client";
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { searchDataKupu } from "../../GraphQL/Query";
+
+import { BiSearchAlt } from "react-icons/bi";
+import { MdOutlineCancel } from "react-icons/md";
 
 export default function SearchBar() {
+  const [data, setData] = useState([]);
+
+  //search
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+
+  const handleFilter = (e) => {
+    const searchWord = e.target.value;
+    setWordEntered(searchWord);
+    const newFilter = data.filter((value) => {
+      return value.binomial_name
+        .toLowerCase()
+        .includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+
+  const clearInput = () => {
+    setFilteredData([]);
+    setWordEntered("");
+  };
+
+  //query data from graphql
+  const { data: allDataKupu } = useQuery(searchDataKupu);
+  useEffect(() => {
+    if (allDataKupu) {
+      setData(allDataKupu?.species);
+    }
+  }, [allDataKupu]);
+
   return (
     <>
       <div className="ml-2 mt-2 row justify-start">
         <div className="xl:w-80 ">
-          <div className="input-group relative flex items-stretch w-full mb-2 bg-primary-white border border-solid hover:border-primary-blue border-primary-gray3 rounded-lg p-2">
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              data-prefix="fas"
-              data-icon="search"
-              className="w-4 text-primary-gray"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-            >
-              <path
-                fill="currentColor"
-                d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-              ></path>
-            </svg>
-
+          <div className="input-group relative flex items-center justify-evenly w-full mb-2 bg-primary-white border border-solid hover:border-primary-blue border-primary-gray3 rounded-lg p-2">
             <input
               type="search"
               className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-primary-gray bg-primary-white bg-clip-padding rounded-md transition ease-in-out m-0 focus:text-primary-gray focus:bg-primary-white focus:border-primary-white focus:outline-none"
               placeholder="Cari kupu-kupu disini..."
               aria-label="Search"
               aria-describedby="button-addon3"
+              value={wordEntered}
+              onChange={handleFilter}
             />
+
+            {filteredData.length === 0 ? (
+              <div className="w-1/6">
+                <BiSearchAlt className="w-4 text-primary-gray" />
+              </div>
+            ) : (
+              <div className="w-1/6">
+                <MdOutlineCancel
+                  onClick={clearInput}
+                  className="w-4 text-primary-gray"
+                />
+              </div>
+            )}
           </div>
+
+          {filteredData.length !== 0 && (
+            <div className="flex flex-col absolute z-10 mt-2 w-64 min-w-max items-center bg-primary-white text-base float-right py-4 text-left rounded-lg shadow-lg m-0 bg-clip-padding border-none">
+              {filteredData.slice(0, 15).map((value, key) => {
+                return (
+                  <NavLink
+                    to={`/detail/${value.id}`}
+                    state={{ value }}
+                    onClick={value.id}
+                  >
+                    <p>{value.binomial_name}</p>
+                  </NavLink>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </>
