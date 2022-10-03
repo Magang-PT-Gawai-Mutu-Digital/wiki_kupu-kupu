@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const getAllDataKupu = gql`
   query AllDataKupu {
-    species(limit: 5) {
+    species(limit: 5, order_by: {id: desc}) {
       binomial_name
       description
       id
@@ -180,7 +180,7 @@ export const getDataKupuKupuById = gql`
 
 export const getAllThumbnail = gql`
   query getThumbnail {
-    species {
+    species (order_by: {id: desc}) {
       id
       thumbnail
       binomial_name

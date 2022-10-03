@@ -38,10 +38,7 @@ export default function Beranda() {
         <div className="laptop:mx-8 phone:mx-2 laptop:absolute w-11/12 bg-primary-white rounded-lg laptop:-mt-20 tablet:mt-8 phone:mt-8 shadow-xl p-4">
           <div className="flex justify-between ">
             <h3 className="text-lg font-semibold">Spesies Terbaru</h3>
-            <NavLink
-              to="/foto"
-              className="text-sm hover:text-primary-green"
-            >
+            <NavLink to="/foto" className="text-sm hover:text-primary-green">
               SEE ALL
             </NavLink>
           </div>
@@ -57,7 +54,9 @@ export default function Beranda() {
                     alt="kupu-kupu"
                     className="w-full rounded-lg aspect-square"
                   />
-                  <h3 className="font-semibold text-center">{item.binomial_name}</h3>
+                  <h3 className="font-semibold text-center">
+                    {item.binomial_name}
+                  </h3>
                   <p>{item.genus.famili.name}</p>
                   <div className="w-full">
                     <NavLink
@@ -81,15 +80,17 @@ export default function Beranda() {
       <div className="flex laptop:gap-96 pl-4 laptop:mt-96 tablet:mt-4 tablet:gap-4 phone:mt-4 phone:gap-4 py-8 bg-primary-lightGreen">
         <div className=" flex flex-col gap-4 text-center items-center">
           <h1 className="text-3xl font-bold uppercase">
-            Selamat datang di taman kupu-kupu{" "}
+            Selamat datang di website katalog kupu-kupu yang ada di taman
+            kupu-kupu{" "}
             <h1 className="inline text-primary-green">gita persada</h1> lampung,
             indonesia
           </h1>
           <p className="text-base">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-            nesciunt perspiciatis atque incidunt laudantium, accusamus culpa
-            totam nulla error saepe non, doloremque, est ipsa nobis recusandae
-            praesentium repellendus deserunt similique!
+            Kupu-kupu merupakan salah satu jenis serangga yang termasuk ke dalam
+            ordo Lepidoptera, yang berasal dari bahasa Yunani yaitu lepis yang
+            berarti sisik dan ptera yang berarti sayap. Diperkirakan ada 17.500
+            jenis kupu-kupu di dunia, tak kurang dari 1.600 jenis diantaranya
+            tersebar di Indonesia
           </p>
           <div className="w-1/2">
             <NavLink to="/tentang">
@@ -141,7 +142,7 @@ export default function Beranda() {
           </NavLink>
         </div>
         <div style={backgroundImage.header}>
-          <a href="https://kupu-kupu.id/" target='_blank' rel="noreferrer">
+          <a href="https://kupu-kupu.id/" target="_blank" rel="noreferrer">
             <div
               className="rounded-lg w-48 h-48 flex items-center"
               style={backgroundImage.content}
@@ -153,7 +154,11 @@ export default function Beranda() {
           </a>
         </div>
         <div style={backgroundImage.header}>
-          <a href="http://jurnal.kupu-kupu.id/" target='_blank' rel="noreferrer">
+          <a
+            href="http://jurnal.kupu-kupu.id/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <div
               className="rounded-lg w-48 h-48 flex items-center"
               style={backgroundImage.content}

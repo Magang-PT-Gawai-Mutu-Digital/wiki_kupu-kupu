@@ -1,7 +1,7 @@
 {
   "name": "wiki_kupu-kupu",
   "version": "0.1.0",
-  "homepage": "https://wiki.kupu-kupu.id/",
+  "homepage": "https://catalog.kupu-kupu.id",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.6.9",

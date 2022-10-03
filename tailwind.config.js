@@ -2,10 +2,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      'phone' : '390px',
-      'tablet': '640px',
-      'laptop': '1024px',
-      'desktop': '1280px',
+      'phone' : {'max': '767px'},
+      'tablet': {'min': '767px', 'max': '1023px'},
+      'laptop': {'min': '1024px'},
     },
     extend: {},
     colors: {

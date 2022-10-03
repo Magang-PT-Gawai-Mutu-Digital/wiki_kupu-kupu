@@ -22,24 +22,32 @@ export default function Foto() {
               Foto Kupu-Kupu di Taman Kupu-Kupu Gita Persada
             </h1>
             <p className="laptop:pl-6 laptop:w-2/3 mx-auto leading-relaxed text-base">
-              Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-              gentrify, subway tile poke farm-to-table. Franzen you probably
-              haven't heard of them man bun deep jianbing selfies heirloom.
+              Taman Kupu-Kupu Gita Persada didirikan pada tahun 1997 oleh
+              Anshori Djausal dan Herawati Soekardi sebagai model pelestarian
+              kupu-kupu. Taman ini, sejak saat itu, telah berhasil melestarikan
+              lebih dari 190 spesies kupu-kupu Sumatera. Dan jumlah ini juga
+              meningkat setiap tahun seiring dengan penelitian tanaman makanan
+              kupu-kupu, habitat mikro dan reproduksi. Berikut foto kupu-kupu
+              yang ada di Taman Kupu-Kupu Gita Persada.
             </p>
           </div>
-          <div className="gap-4 columns-4">
+          <div className="gap-4 columns-4 phone:columns-2">
             {images.map((image, index) => (
               <div className="relative ">
-              <NavLink to={`/detail/${image.id}`}
-                      key={index}
-                      state={{ image }}
-                      onClick={image.id}>
-                <img
-                  src={`data:image/jpeg;base64,${image.thumbnail}`}
-                  alt={image.binomial_name}
-                  className="w-full aspect-square mb-4 rounded-xl"
-                />
-                <p className="absolute inset-0 z-10 bg-primary-gray italic font-semibold text-center flex flex-col items-center justify-center opacity-0 hover:opacity-100 bg-opacity-90 duration-300">{image.binomial_name}</p>
+                <NavLink
+                  to={`/detail/${image.id}`}
+                  key={index}
+                  state={{ image }}
+                  onClick={image.id}
+                >
+                  <img
+                    src={`data:image/jpeg;base64,${image.thumbnail}`}
+                    alt={image.binomial_name}
+                    className="w-full aspect-square mb-4 rounded-xl"
+                  />
+                  <p className="absolute inset-0 z-10 bg-primary-gray italic font-semibold text-center flex flex-col items-center justify-center rounded-xl opacity-0 hover:opacity-100 bg-opacity-90 duration-300">
+                    {image.binomial_name}
+                  </p>
                 </NavLink>
               </div>
             ))}

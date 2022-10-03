@@ -23,8 +23,8 @@ export default function Navbar() {
   return (
     <div>
       <header className="text-primary-black body-font">
-        <div className="container mx-auto flex flex-wrap laptop:px-5 flex-col tablet:flex-row tablet:justify-center tablet:px-5 phone:px-2 phone:justify-center items-center laptop:justify-between">
-          <nav className="flex flex-wrap items-center font-semibold">
+        <div className="container mx-auto flex flex-wrap laptop:px-5 tablet:flex-row tablet:justify-center tablet:px-5 phone:px-2 phone:justify-center items-center laptop:justify-between">
+          <nav className="inline-flex flex-wrap items-center font-semibold">
             <NavLink
               to="/"
               activeclassName="active"
@@ -36,7 +36,7 @@ export default function Navbar() {
               <button
                 id="nav-toggle"
                 onClick={() => handleClickToggle()}
-                className="mr-5 flex items-center hover:text-primary-green"
+                className="mr-5 inline-flex items-center hover:text-primary-green"
                 aria-expanded="true"
                 aria-haspopup="true"
               >
@@ -57,7 +57,7 @@ export default function Navbar() {
               {isToggleOn ? (
                 ""
               ) : (
-                <div className="flex flex-col absolute z-10 laptop:left-16 tablet:left-48 phone:left-16 mt-2 w-36 min-w-max items-center bg-primary-white text-base float-left py-2 list-none text-left rounded-lg shadow-lg m-0 bg-clip-padding border-none">
+                <div className="flex flex-col absolute z-10 mt-2 w-32 -ml-4 min-w-max items-center bg-primary-white text-base float-left py-2 list-none text-left rounded-lg shadow-lg m-0 bg-clip-padding border-none">
                   {dataKupu?.map((data, index) => (
                     <NavLink
                       to={`/klasifikasi/${data.id}`}

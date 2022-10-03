@@ -9,8 +9,10 @@ export default function SiklusHidupTab(props) {
           <div className="flex flex-wrap -m-4">
             {datakupu.map((images, index) => (
               <>
+              {images.butterfly_images.length !== 0 ? (
+              <>
                 {images.butterfly_images?.map((image, index) => (
-                  <div className="laptop:w-1/4 phone:w-1/2 p-4">
+                  <div className="laptop:w-1/4  tablet:w-1/3 phone:w-1/2 p-4">
                     <img
                       key={index}
                       src={`data:image/jpeg;base64,${image.lifecycle_images}`}
@@ -21,6 +23,10 @@ export default function SiklusHidupTab(props) {
                   </div>
                 ))}
               </>
+               ) : (
+                <div className="font-semibold">Tidak ada Foto untuk saat ini</div>
+              )}
+            </>
             ))}
           </div>
         </div>
