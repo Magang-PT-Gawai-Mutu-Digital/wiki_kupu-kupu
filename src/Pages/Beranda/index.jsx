@@ -108,7 +108,7 @@ export default function Beranda() {
         <ReactPlayer
           width="80%"
           height="480px"
-          url="https://youtu.be/6hN2YEQ8jq4"
+          url="https://youtu.be/QZJ2as1VMZM"
         ></ReactPlayer>
       </div>
 
@@ -128,7 +128,6 @@ export default function Beranda() {
           </NavLink>
         </div>
 
-        {/* loop  */}
         <div style={backgroundImage.header}>
           <NavLink to="/metamorfosis">
             <div
