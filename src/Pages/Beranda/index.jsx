@@ -35,7 +35,7 @@ export default function Beranda() {
       <div className="laptop:relative">
         <Carousel images={images} />
         {/* spesies terbaru  */}
-        <div className="laptop:mx-8 phone:mx-2 laptop:absolute w-11/12 bg-primary-white rounded-lg laptop:-mt-20 tablet:mt-8 phone:mt-8 shadow-xl p-4">
+        <div className="laptop:mx-8 phone:mx-2 laptop:absolute w-11/12 bg-primary-white rounded-lg laptop:-mt-20 tablet:relative tablet:mt-8 tablet:mx-8 phone:mt-8 shadow-xl p-4">
           <div className="flex justify-between ">
             <h3 className="text-lg font-semibold">Spesies Terbaru</h3>
             <NavLink to="/foto" className="text-sm hover:text-primary-green">
@@ -108,7 +108,7 @@ export default function Beranda() {
         <ReactPlayer
           width="80%"
           height="480px"
-          url="https://youtu.be/QZJ2as1VMZM"
+          url="https://youtu.be/WhS7jiZgqoc"
         ></ReactPlayer>
       </div>
 

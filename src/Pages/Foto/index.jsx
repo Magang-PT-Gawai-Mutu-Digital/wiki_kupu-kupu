@@ -25,13 +25,13 @@ export default function Foto() {
               Taman Kupu-Kupu Gita Persada didirikan pada tahun 1997 oleh
               Anshori Djausal dan Herawati Soekardi sebagai model pelestarian
               kupu-kupu. Taman ini, sejak saat itu, telah berhasil melestarikan
-              lebih dari 190 spesies kupu-kupu Sumatera. Dan jumlah ini juga
+              lebih dari 197 spesies kupu-kupu Sumatera. Dan jumlah ini juga
               meningkat setiap tahun seiring dengan penelitian tanaman makanan
               kupu-kupu, habitat mikro dan reproduksi. Berikut foto kupu-kupu
               yang ada di Taman Kupu-Kupu Gita Persada.
             </p>
           </div>
-          <div className="gap-4 columns-4 phone:columns-2">
+          <div className="gap-4 columns-4 phone:columns-2 tablet:columns-4">
             {images.map((image, index) => (
               <div className="relative ">
                 <NavLink
