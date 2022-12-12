@@ -1,114 +1,56 @@
-import React, { useState } from "react";
+import { useQuery } from "@apollo/client";
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { getAllThumbnail } from "../../GraphQL/Query";
 
 export default function Foto() {
-  const [images] = useState([
-    {
-      id: 1,
-      src: require("../../assets/spesies.png"),
-      alt: "kupu-kupu",
-    },
-    {
-      id: 2,
-      src: require("../../assets/welcomepic.png"),
-      alt: "kupu-kupu",
-    },
-    {
-      id: 3,
-      src: require("../../assets/TKGP-Logo.png"),
-      alt: "kupu-kupu",
-    },
-    {
-      id: 4,
-      src: require("../../assets/spesies.png"),
-      alt: "kupu-kupu",
-    },
-    {
-      id: 5,
-      src: require("../../assets/spesies.png"),
-      alt: "kupu-kupu",
-    },
-  ]);
+  const [images, setImages] = useState([]);
+  const { data: image } = useQuery(getAllThumbnail);
+
+  useEffect(() => {
+    if (image) {
+      setImages(image?.species);
+    }
+  }, [image]);
+
   return (
     <div>
       <section className="body-font">
         <div className="container px-5 py-4 mx-auto flex flex-wrap">
           <div className="flex w-full mb-20 flex-wrap">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font lg:w-1/3 lg:mb-0 mb-4">
-              Foto Kegiatan di Taman Kupu-Kupu
+            <h1 className="phone:text-3xl text-2xl font-medium title-font laptop:w-1/3 laptop:mb-0 mb-4">
+              Foto Kupu-Kupu di Taman Kupu-Kupu Gita Persada
             </h1>
-            <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base">
-              Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-              gentrify, subway tile poke farm-to-table. Franzen you probably
-              haven't heard of them man bun deep jianbing selfies heirloom.
+            <p className="laptop:pl-6 laptop:w-2/3 mx-auto leading-relaxed text-base">
+              Taman Kupu-Kupu Gita Persada didirikan pada tahun 1997 oleh
+              Anshori Djausal dan Herawati Soekardi sebagai model pelestarian
+              kupu-kupu. Taman ini, sejak saat itu, telah berhasil melestarikan
+              lebih dari 197 spesies kupu-kupu Sumatera. Dan jumlah ini juga
+              meningkat setiap tahun seiring dengan penelitian tanaman makanan
+              kupu-kupu, habitat mikro dan reproduksi. Berikut foto kupu-kupu
+              yang ada di Taman Kupu-Kupu Gita Persada.
             </p>
           </div>
-          <div className="flex flex-wrap md:-m-2 -m-1">
-            <>
-              <div className="flex flex-wrap w-1/2">
-                {images.map((image, index) => (
-                  <div className="md:p-2 p-1 w-1/2">
-                    <img
-                      key={index}
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full object-cover h-full object-center block"
-                    />
-                  </div>
-                ))}
-                {images.map((image, index) => (
-                  <div className="md:p-2 p-1 w-1/2">
-                    <img
-                      key={index}
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full object-cover h-full object-center block"
-                    />
-                  </div>
-                ))}
-                {images.map((image, index) => (
-                  <div className="md:p-2 p-1 w-full">
-                    <img
-                      key={index}
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover object-center block"
-                    />
-                  </div>
-                ))}
+          <div className="gap-4 columns-4 phone:columns-2 tablet:columns-4">
+            {images.map((image, index) => (
+              <div className="relative ">
+                <NavLink
+                  to={`/detail/${image.id}`}
+                  key={index}
+                  state={{ image }}
+                  onClick={image.id}
+                >
+                  <img
+                    src={`data:image/jpeg;base64,${image.thumbnail}`}
+                    alt={image.binomial_name}
+                    className="w-full aspect-square mb-4 rounded-xl"
+                  />
+                  <p className="absolute inset-0 z-10 bg-primary-gray italic font-semibold text-center flex flex-col items-center justify-center rounded-xl opacity-0 hover:opacity-100 bg-opacity-90 duration-300">
+                    {image.binomial_name}
+                  </p>
+                </NavLink>
               </div>
-              <div className="flex flex-wrap w-1/2">
-                {images.map((image, index) => (
-                  <div className="md:p-2 p-1 w-full">
-                    <img
-                      key={index}
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover object-center block"
-                    />
-                  </div>
-                ))}
-                {images.map((image, index) => (
-                  <div className="md:p-2 p-1 w-1/2">
-                    <img
-                      key={index}
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full object-cover h-full object-center block"
-                    />
-                  </div>
-                ))}
-                {images.map((image, index) => (
-                  <div className="md:p-2 p-1 w-1/2">
-                    <img
-                      key={index}
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full object-cover h-full object-center block"
-                    />
-                  </div>
-                ))}
-              </div>
-            </>
+            ))}
           </div>
         </div>
       </section>

@@ -6,16 +6,12 @@ import { useQuery } from "@apollo/client";
 import { getAllDataKupu } from "../../GraphQL/Query";
 import Carousel from "../../Components/Carousel";
 import Button from "../../Components/Button";
-
-import spesies from "../../assets/spesies.png";
-import welcomepic from "../../assets/welcomepic.png";
-import logo from "../../assets/logo_gawai.jpeg";
 import images from "../../Components/Carousel/images";
 
 export default function Beranda() {
   const backgroundImage = {
     header: {
-      backgroundImage: `url(${spesies})`,
+      backgroundImage: `url(${require("../../assets/spesies.png")})`,
       backgroundSize: "cover",
       borderRadius: "10px",
     },
@@ -26,51 +22,47 @@ export default function Beranda() {
   };
 
   const [allKupu, setAllKupu] = useState([]);
-
   const { data: allDataKupu } = useQuery(getAllDataKupu);
 
   useEffect(() => {
     if (allDataKupu) {
-      setAllKupu(allDataKupu?.nama_umum);
+      setAllKupu(allDataKupu?.species);
     }
   }, [allDataKupu]);
 
   return (
     <div className="h-full mb-8">
-      <div className="relative">
+      <div className="laptop:relative">
         <Carousel images={images} />
         {/* spesies terbaru  */}
-        <div className="mx-8 absolute w-11/12 bg-primary-white rounded-lg -mt-20 shadow-xl p-4">
+        <div className="laptop:mx-8 phone:mx-2 laptop:absolute w-11/12 bg-primary-white rounded-lg laptop:-mt-20 tablet:relative tablet:mt-8 tablet:mx-8 phone:mt-8 shadow-xl p-4">
           <div className="flex justify-between ">
             <h3 className="text-lg font-semibold">Spesies Terbaru</h3>
-            <NavLink
-              to="/klasifikasi"
-              className="text-sm hover:text-primary-green"
-            >
+            <NavLink to="/foto" className="text-sm hover:text-primary-green">
               SEE ALL
             </NavLink>
           </div>
-          <div className="flex flex-wrap p-4 gap-14">
+          <div className="flex flex-wrap p-4 laptop:gap-12 tablet:gap-4 phone:gap-2 tablet:justify-center phone:justify-center">
             {allKupu.map((item, index) => (
               <>
                 <div
                   key={index}
-                  className="w-44 pb-2 rounded-lg shadow-xl flex flex-col items-center gap-2"
+                  className="laptop:w-44 tablet:w-44 phone:w-44 pb-2 rounded-lg shadow-xl flex flex-wrap h-max flex-col items-center gap-2"
                 >
                   <img
-                   src={`data:image/jpeg;base64,${item.image}`}
+                    src={`data:image/jpeg;base64,${item.thumbnail}`}
                     alt="kupu-kupu"
-                    width="176"
-                    className="rounded-lg"
+                    className="w-full rounded-lg aspect-square"
                   />
-                  <h3 className="font-semibold">{item.nama_ilmiah.name}</h3>
-
-                  <p>{item.nama_ilmiah.spesy.genus.sub_famili.famili.name}</p>
+                  <h3 className="font-semibold text-center">
+                    {item.binomial_name}
+                  </h3>
+                  <p>{item.genus.famili.name}</p>
                   <div className="w-full">
                     <NavLink
                       to={`/detail/${item.id}`}
                       key={index}
-                      state={{item}}
+                      state={{ item }}
                       onClick={item.id}
                       className="w-full flex justify-center items-center"
                     >
@@ -85,18 +77,20 @@ export default function Beranda() {
       </div>
 
       {/* welcome  */}
-      <div className="container flex gap-96 pl-4 mt-96 py-8 bg-primary-lightGreen">
-        <div className=" flex flex-col gap-4">
+      <div className="flex laptop:gap-96 pl-4 laptop:mt-96 tablet:mt-4 tablet:gap-4 phone:mt-4 phone:gap-4 py-8 bg-primary-lightGreen">
+        <div className=" flex flex-col gap-4 text-center items-center">
           <h1 className="text-3xl font-bold uppercase">
-            Selamat datang di taman kupu-kupu{" "}
+            Selamat datang di website katalog kupu-kupu yang ada di taman
+            kupu-kupu{" "}
             <h1 className="inline text-primary-green">gita persada</h1> lampung,
             indonesia
           </h1>
           <p className="text-base">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-            nesciunt perspiciatis atque incidunt laudantium, accusamus culpa
-            totam nulla error saepe non, doloremque, est ipsa nobis recusandae
-            praesentium repellendus deserunt similique!
+            Kupu-kupu merupakan salah satu jenis serangga yang termasuk ke dalam
+            ordo Lepidoptera, yang berasal dari bahasa Yunani yaitu lepis yang
+            berarti sisik dan ptera yang berarti sayap. Diperkirakan ada 17.500
+            jenis kupu-kupu di dunia, tak kurang dari 1.600 jenis diantaranya
+            tersebar di Indonesia
           </p>
           <div className="w-1/2">
             <NavLink to="/tentang">
@@ -104,8 +98,8 @@ export default function Beranda() {
             </NavLink>
           </div>
         </div>
-        <div>
-          <img src={welcomepic} alt="kupu-kupu" />
+        <div className="flex items-center">
+          <img src={require("../../assets/welcomepic.png")} alt="kupu-kupu" />
         </div>
       </div>
 
@@ -114,13 +108,13 @@ export default function Beranda() {
         <ReactPlayer
           width="80%"
           height="480px"
-          url="https://youtu.be/6hN2YEQ8jq4"
+          url="https://youtu.be/WhS7jiZgqoc"
         ></ReactPlayer>
       </div>
 
       {/* fitur lainnya */}
       <h1 className="text-3xl font-bold text-center mb-8">Fitur Lainnya</h1>
-      <div className="flex gap-24 justify-center">
+      <div className="flex flex-wrap laptop:gap-24 phone:gap-4 justify-center">
         <div style={backgroundImage.header}>
           <NavLink to="/anatomi">
             <div
@@ -134,7 +128,6 @@ export default function Beranda() {
           </NavLink>
         </div>
 
-        {/* loop  */}
         <div style={backgroundImage.header}>
           <NavLink to="/metamorfosis">
             <div
@@ -148,7 +141,7 @@ export default function Beranda() {
           </NavLink>
         </div>
         <div style={backgroundImage.header}>
-          <NavLink to="/artikel">
+          <a href="https://kupu-kupu.id/" target="_blank" rel="noreferrer">
             <div
               className="rounded-lg w-48 h-48 flex items-center"
               style={backgroundImage.content}
@@ -157,19 +150,23 @@ export default function Beranda() {
                 Artikel Kupu-Kupu
               </h1>
             </div>
-          </NavLink>
+          </a>
         </div>
         <div style={backgroundImage.header}>
-          <NavLink to="/museum">
+          <a
+            href="http://jurnal.kupu-kupu.id/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <div
               className="rounded-lg w-48 h-48 flex items-center"
               style={backgroundImage.content}
             >
               <h1 className="text-2xl font-semibold text-center">
-                Museum Kupu-Kupu
+                Jurnal Kupu-Kupu
               </h1>
             </div>
-          </NavLink>
+          </a>
         </div>
       </div>
 
@@ -177,11 +174,27 @@ export default function Beranda() {
       <h1 className="text-3xl font-bold text-center my-8">
         Lembaga yang Berpartisipasi
       </h1>
-      <div className="flex justify-center gap-12">
-        <img src={logo} alt="logo gawai mutu digital" width="240px" />
-        <img src={logo} alt="logo gawai mutu digital" width="240px" />
-        <img src={logo} alt="logo gawai mutu digital" width="240px" />
-        <img src={logo} alt="logo gawai mutu digital" width="240px" />
+      <div className="flex flex-wrap justify-center laptop:gap-12 phone:gap-2">
+        <img
+          src={require("../../assets/logo_gawai.jpeg")}
+          alt="logo gawai mutu digital"
+          width="240px"
+        />
+        <img
+          src={require("../../assets/logo_gawai.jpeg")}
+          alt="logo gawai mutu digital"
+          width="240px"
+        />
+        <img
+          src={require("../../assets/logo_gawai.jpeg")}
+          alt="logo gawai mutu digital"
+          width="240px"
+        />
+        <img
+          src={require("../../assets/logo_gawai.jpeg")}
+          alt="logo gawai mutu digital"
+          width="240px"
+        />
       </div>
     </div>
   );

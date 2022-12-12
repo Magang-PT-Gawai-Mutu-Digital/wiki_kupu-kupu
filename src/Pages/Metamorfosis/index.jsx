@@ -3,17 +3,17 @@ import React from "react";
 export default function Metamorfosis() {
   return (
     <div>
-      <div class="flex flex-col text-center w-full my-8">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+      <div className="flex flex-col text-center w-full my-8">
+        <h1 className="phone:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
           Metamorfosis dari Kupu-Kupu
         </h1>
-        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+        <p className="laptop:w-2/3 mx-auto leading-relaxed text-base">
           Kupu-kupu adalah hewan yang mengalami metamorfosis senpurna dalam
           hidupnya, terdapat 4 fase, yaitu : telur - larva (ulat) - pupa
           (kepompong) - imago (kupu-kupu dewasa)
         </p>
       </div>
-      <div className="flex flex-wrap gap-4 m-4 justify-between">
+      <div className="flex flex-wrap gap-4 m-4 laptop:justify-between tablet:justify-between phone:justify-center">
         <div className="flex flex-col gap-4 items-center">
           <button className="w-64 max-h-64 p-4 text-center rounded-lg bg-primary-lightGreen transform duration-700 ease-in-out hover:-translate-y-1 hover:scale-110  hover:bg-primary-lightGray">
             Telur merupakan fase pertama dalam metamorfosis kupu-kupu. Setiap
@@ -22,14 +22,14 @@ export default function Metamorfosis() {
           </button>
           <h1 className="text-xl font-bold">Telur</h1>
           <img
-            src={require("../../assets/spesies.png")}
+            src={require("../../assets/telur.jpg")}
             alt="teur"
             className="w-64 rounded-lg transform duration-700 ease-in-out hover:-translate-y-1 hover:scale-110"
           />
         </div>
         <div className="flex flex-col gap-4 items-center">
           <img
-            src={require("../../assets/spesies.png")}
+            src={require("../../assets/ulat.jpg")}
             alt="teur"
             className="w-64 rounded-lg transform duration-700 ease-in-out hover:-translate-y-1 hover:scale-110"
           />
@@ -49,14 +49,14 @@ export default function Metamorfosis() {
           </button>
           <h1 className="text-xl font-bold">Pupa (Kepompong)</h1>
           <img
-            src={require("../../assets/spesies.png")}
+            src={require("../../assets/kepompong.jpg")}
             alt="teur"
             className="w-64 rounded-lg transform duration-700 ease-in-out hover:-translate-y-1 hover:scale-110"
           />
         </div>
         <div className="flex flex-col gap-4 items-center">
           <img
-            src={require("../../assets/spesies.png")}
+            src={require("../../assets/kupu-kupu.jpg")}
             alt="teur"
             className="w-64 rounded-lg transform duration-700 ease-in-out hover:-translate-y-1 hover:scale-110"
           />

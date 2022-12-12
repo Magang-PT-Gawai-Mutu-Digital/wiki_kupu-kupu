@@ -8,13 +8,11 @@ import { getDataKupuKupuById } from "../../GraphQL/Query";
 export default function Detail() {
   const { id } = useParams();
   const [datakupu, setData] = useState([])
-  const {data: kupuById} = useQuery(getDataKupuKupuById, {variables: {id_namaumum : id}})
-
-  console.log(datakupu);
+  const {data: kupuById} = useQuery(getDataKupuKupuById, {variables: {id_spesies : id}})
 
   useEffect(() => {
     if (kupuById) {
-      setData(kupuById?.nama_umum);
+      setData(kupuById?.species);
     }
   }, [kupuById]);
 

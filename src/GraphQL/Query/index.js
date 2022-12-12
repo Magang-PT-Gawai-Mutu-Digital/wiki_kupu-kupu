@@ -2,29 +2,42 @@ import { gql } from "@apollo/client";
 
 export const getAllDataKupu = gql`
   query AllDataKupu {
-    nama_umum(limit: 5) {
-      id
+    species(limit: 5, order_by: {id: desc}) {
+      binomial_name
       description
-      image
-      name
-      nama_ilmiah {
+      id
+      indonesian_name
+      species_name
+      thumbnail
+      butterfly_images {
         id
-        name
-        spesy {
+        lifecycle_images
+      }
+      butterfly_all_images {
+        id
+        image
+      }
+      persebarans {
+        id
+        alamat
+        latitude
+        link
+        longtitude
+      }
+      referensis {
+        id
+        penulis
+        judul
+        tahun_terbit
+        nama_jurnal
+        volume
+      }
+      genus {
+        genus_name
+        id
+        famili {
           id
           name
-          genus {
-            id
-            name
-            sub_famili {
-              id
-              name
-              famili {
-                id
-                name
-              }
-            }
-          }
         }
       }
     }
@@ -33,28 +46,87 @@ export const getAllDataKupu = gql`
 
 export const getKlasifikasiKupu = gql`
   query AllKlasifikasi {
-    nama_umum {
-      id
+    famili {
       description
-      image
+      id
       name
-      nama_ilmiah {
+      genera {
+        genus_name
         id
-        name
-        spesy {
+        species {
+          binomial_name
+          description
           id
-          name
-          genus {
+          indonesian_name
+          species_name
+          thumbnail
+          butterfly_images {
+            lifecycle_images
             id
-            name
-            sub_famili {
-              id
-              name
-              famili {
-                id
-                name
-              }
-            }
+          }
+          butterfly_all_images {
+            id
+            image
+          }
+          persebarans {
+            id
+            alamat
+            latitude
+            link
+            longtitude
+          }
+          referensis {
+            id
+            penulis
+            judul
+            tahun_terbit
+            nama_jurnal
+            volume
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const getKlasifikasiKupuById = gql`
+  query AllKlasifikasi($id_famili: Int!) {
+    famili(where: { id: { _eq: $id_famili } }) {
+      description
+      id
+      name
+      genera {
+        genus_name
+        id
+        species {
+          binomial_name
+          description
+          id
+          indonesian_name
+          species_name
+          thumbnail
+          butterfly_images {
+            lifecycle_images
+            id
+          }
+          butterfly_all_images {
+            id
+            image
+          }
+          persebarans {
+            id
+            alamat
+            latitude
+            link
+            longtitude
+          }
+          referensis {
+            id
+            penulis
+            judul
+            tahun_terbit
+            nama_jurnal
+            volume
           }
         }
       }
@@ -63,30 +135,97 @@ export const getKlasifikasiKupu = gql`
 `;
 
 export const getDataKupuKupuById = gql`
-  query DataKupuById($id_namaumum: Int!) {
-    nama_umum(where: { id: { _eq: $id_namaumum } }) {
-      id
+  query DataKupuById($id_spesies: Int!) {
+    species(where: { id: { _eq: $id_spesies } }) {
+      binomial_name
       description
-      image
-      name
-      nama_ilmiah {
+      id
+      indonesian_name
+      species_name
+      thumbnail
+      butterfly_images {
         id
-        name
-        spesy {
+        lifecycle_images
+      }
+      butterfly_all_images {
+        id
+        image
+      }
+      persebarans {
+        id
+        alamat
+        latitude
+        link
+        longtitude
+      }
+      referensis {
+        id
+        penulis
+        judul
+        tahun_terbit
+        nama_jurnal
+        volume
+      }
+      genus {
+        genus_name
+        id
+        famili {
           id
           name
-          genus {
-            id
-            name
-            sub_famili {
-              id
-              name
-              famili {
-                id
-                name
-              }
-            }
-          }
+        }
+      }
+    }
+  }
+`;
+
+export const getAllThumbnail = gql`
+  query getThumbnail {
+    species (order_by: {id: desc}) {
+      id
+      thumbnail
+      binomial_name
+    }
+  }
+`;
+
+export const searchDataKupu = gql`
+  query AllDataKupu {
+    species {
+      binomial_name
+      description
+      id
+      indonesian_name
+      species_name
+      thumbnail
+      butterfly_images {
+        id
+        lifecycle_images
+      }
+      butterfly_all_images {
+        id
+        image
+      }
+      persebarans {
+        id
+        alamat
+        latitude
+        link
+        longtitude
+      }
+      referensis {
+        id
+        penulis
+        judul
+        tahun_terbit
+        nama_jurnal
+        volume
+      }
+      genus {
+        genus_name
+        id
+        famili {
+          id
+          name
         }
       }
     }

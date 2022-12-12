@@ -1,43 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function GaleriFotoTab() {
-  const [images] = useState([
-    {
-      id: 1,
-      src: require("../../../assets/spesies.png"),
-      alt: "kupu-kupu",
-    },
-    {
-      id: 2,
-      src: require("../../../assets/spesies.png"),
-      alt: "kupu-kupu",
-    },
-    {
-      id: 3,
-      src: require("../../../assets/spesies.png"),
-      alt: "kupu-kupu",
-    },
-    {
-      id: 4,
-      src: require("../../../assets/spesies.png"),
-      alt: "kupu-kupu",
-    },
-  ]);
+export default function GaleriFotoTab(props) {
+  const { datakupu } = props;
   return (
     <div>
       <section className="body-font py-4">
         <div className="container px-8 py-4 mx-auto">
           <div className="flex flex-wrap -m-4">
-            {images.map((image, index) => (
-              <div className="lg:w-1/4 sm:w-1/2 p-4">
-                <img
-                  key={index}
-                  src={image.src}
-                  alt={image.alt}
-                  width="248"
-                  className="rounded-lg"
-                />
-              </div>
+            {datakupu.map((images, index) => (
+              <>
+                {images.butterfly_all_images.length !== 0 ? (
+                  <>
+                    {images.butterfly_all_images.map((item, index) => (
+                      <div className="laptop:w-1/4 tablet:w-1/3 phone:w-1/2 p-4">
+                        <img
+                          key={index}
+                          src={`data:image/jpeg;base64,${item.image}`}
+                          alt={item.description}
+                          width="248"
+                          className="rounded-lg w-full aspect-square"
+                        />
+                      </div>
+                    ))}
+                  </>
+                ) : (
+                  <div className="font-semibold">Tidak ada Foto untuk saat ini</div>
+                )}
+              </>
             ))}
           </div>
         </div>

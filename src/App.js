@@ -13,12 +13,12 @@ import Tentang from "./Pages/Tentang";
 
 function App() {
   return (
-    <div className="bg-secondary-softblue">
+    <div className="bg-primary-white">
       <Router>
         <Navbar />
         <Routes>
           <Route path="/" element={<Beranda />} />
-          <Route path="/klasifikasi" element={<Klasifikasi />} />
+          <Route path="/klasifikasi/:id" element={<Klasifikasi />} />
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/tentang" element={<Tentang />} />
           <Route path="/foto" element={<Foto />} />
